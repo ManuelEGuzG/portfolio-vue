@@ -96,7 +96,7 @@ export const proyectos = [
     tecnologias: ['Vue.js', 'HTML5', 'CSS3', 'JavaScript'],
     tipo: 'personal',
     urlRepositorio: '',
-    urlDemo: 'https://manueleguzg.github.io/Gu-a-Tur-stica-Multimedia-de-Costa-Rica/',
+    urlDemo: 'https://manueleguzg.github.io/Norte-Song/#/',
     estadisticas: { agregadas: 845, eliminadas: 310 }
   }
 ]
