@@ -15,8 +15,8 @@ defineProps({
   rol: { type: String, required: true },
   biografia: { type: String, required: true },
   urlGithub: { type: String, required: true },
-  urlLinkedin: { type: String, required: true },
-  urlCv: { type: String, required: true }
+  urlLinkedin: { type: String, required: true, default: 'https://www.linkedin.com/in/manuel-guzmán-b10015327/' },
+  urlCv: { type: String, required: true, default: 'https://github.com/ManuelEGuzG/cv/raw/main/CV-Manuel-Esteban-Guzman.pdf' }
 })
 
 // Nodos del grafo decorativo estático: cada uno representa un dominio técnico.
