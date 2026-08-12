@@ -60,7 +60,13 @@ function irAProyectos() {
         </p>
 
         <div class="mt-9 flex flex-wrap gap-4">
-          <BotonMagnetico :href="urlCv" download class="btn-primary"> ↓ Descargar CV </BotonMagnetico>
+          <BotonMagnetico
+            :href="urlCv"
+            :download="'CV-Manuel-Esteban-Guzman.pdf'"
+            class="btn-primary"
+          >
+            ↓ Descargar CV
+          </BotonMagnetico>
           <BotonMagnetico :href="urlGithub" target="_blank" rel="noopener" class="btn-ghost">
             GitHub
           </BotonMagnetico>
