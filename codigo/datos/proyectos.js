@@ -76,6 +76,17 @@ export const proyectos = [
     urlRepositorio: '',
     urlDemo: '',
     estadisticas: { agregadas: 1620, eliminadas: 280 }
+  },
+  {
+    id: 'p6',
+    titulo: 'Guia Naturalista de Costa Rica',
+    descripcion:
+      'Sistema para estimar el peso de bovinos a partir de imágenes, con backend en Laravel integrado al frontend en Vue.js mediante API. Incorpora un módulo en Python para el procesamiento/estimación con IA y una app en Android Studio para captura en campo. Uso de Docker y Git durante el desarrollo y mantenimiento del proyecto.',
+    tecnologias: ['Laravel', 'Vue.js', 'MySQL', 'Docker', 'Python', 'Android Studio'],
+    tipo: 'academico',
+    urlRepositorio: '',
+    urlDemo: 'https://manueleguzg.github.io/Gu-a-Tur-stica-Multimedia-de-Costa-Rica/',
+    estadisticas: { agregadas: 1620, eliminadas: 280 }
   }
 ]
 
