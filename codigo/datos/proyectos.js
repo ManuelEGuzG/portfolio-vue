@@ -92,7 +92,7 @@ export const proyectos = [
     id: 'p7',
     titulo: 'Norte Songs — Aplicación Web de Música y Letras',
     descripcion:
-      'Aplicación web multimedia desarrollada con **Vue 3** para la gestión y presentación del repertorio musical de la Iglesia del Norte.',
+      'Aplicación web multimedia desarrollada con Vue 3 para la gestión y presentación del repertorio musical de la Iglesia del Norte.',
     tecnologias: ['Vue.js', 'HTML5', 'CSS3', 'JavaScript'],
     tipo: 'personal',
     urlRepositorio: '',
