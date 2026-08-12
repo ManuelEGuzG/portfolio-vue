@@ -1,0 +1,256 @@
+/**
+ * estilos.css
+ * -----------------------------------------------------------------------
+ * Hoja de estilos global del proyecto.
+ *
+ * Estructura de este archivo:
+ *   1. Directivas de Tailwind (base, componentes, utilidades)
+ *   2. Ajustes globales (@layer base): selección de texto, scrollbar, focus
+ *   3. Clases reutilizables (@layer components): botones, tarjetas, tags...
+ *   4. Estilos "a mano" que Tailwind no cubre bien: fondo de plano técnico,
+ *      animaciones de scroll-reveal, efecto spotlight en tarjetas y el
+ *      grafo de nodos animado del Hero.
+ * -----------------------------------------------------------------------
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   1. AJUSTES GLOBALES
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth; /* scroll suave al navegar por anclas (#proyectos, etc.) */
+  }
+  body {
+    font-feature-settings: 'ss01' on; /* variante tipográfica estilística de Inter */
+    overflow-x: hidden; /* evita scroll horizontal por elementos decorativos */
+  }
+  ::selection {
+    background: rgba(76, 201, 240, 0.28); /* color al seleccionar texto con el mouse */
+    color: #fff;
+  }
+  :focus-visible {
+    /* Contorno visible al navegar con teclado (accesibilidad) */
+    outline: 2px solid #4cc9f0;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Barra de scroll personalizada (Chrome/Edge/Safari) */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0b1220;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 999px;
+    border: 2px solid #0b1220;
+  }
+}
+
+/* ============================================================
+   2. CLASES REUTILIZABLES
+   Se usan directamente en las plantillas .vue, ej: class="btn-primary"
+   ============================================================ */
+@layer components {
+  /* Etiqueta técnica tipo anotación de plano, ej: "SEC. 02" */
+  .blueprint-tag {
+    @apply font-mono text-[11px] tracking-[0.2em] uppercase text-signal;
+  }
+
+  /* Línea decorativa corta antes de un subtítulo */
+  .section-divider {
+    @apply flex items-center gap-4 my-2;
+  }
+  .section-divider::before {
+    content: '';
+    @apply h-px w-8 bg-signal/60;
+  }
+
+  /* Panel base: tarjetas, cajas de contenido */
+  .panel {
+    @apply bg-surface border border-line rounded-2xl;
+  }
+
+  /* Chip/etiqueta pequeña (usada para tecnologías y filtros) */
+  .tag {
+    @apply font-mono text-[11px] px-2.5 py-1 rounded-full border border-line text-muted bg-surface2 transition-colors duration-300;
+  }
+  .tag-active {
+    @apply border-signal/70 text-signal bg-signal/10;
+  }
+
+  /* Botón principal (relleno, color de acento) */
+  .btn-primary {
+    @apply relative inline-flex items-center gap-2 font-mono text-sm px-6 py-3 rounded-full bg-signal text-ink font-semibold overflow-hidden transition-transform duration-300;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 40px -6px rgba(76, 201, 240, 0.7);
+  }
+
+  /* Botón secundario (solo borde) */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 font-mono text-sm px-6 py-3 rounded-full border border-line text-paper hover:border-signal hover:text-signal transition-colors duration-300;
+  }
+}
+
+/* ============================================================
+   3. FONDO DE "PLANO TÉCNICO" (blueprint)
+   Cuadrícula sutil usada en el Hero y en Contacto.
+   ============================================================ */
+.blueprint-bg {
+  background-color: #0b1220;
+  background-image:
+    linear-gradient(to right, #ffffff09 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff09 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ============================================================
+   4. SISTEMA DE ANIMACIÓN "REVEAL ON SCROLL"
+   Usado por la directiva v-revelar (ver codigo/directivas/revelarAlEntrar.js)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   5. TARJETA CON "SPOTLIGHT" QUE SIGUE AL CURSOR
+   Las variables --x y --y las actualiza JS en TarjetaProyecto.vue
+   con el evento @mousemove, y aquí se usan en un gradiente radial.
+   ============================================================ */
+.spot-card {
+  position: relative;
+  isolation: isolate;
+}
+.spot-card::before {
+  /* Borde brillante que sigue al cursor */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    380px circle at var(--x, 50%) var(--y, 50%),
+    rgba(76, 201, 240, 0.55),
+    transparent 60%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.spot-card::after {
+  /* Resplandor suave de fondo que sigue al cursor */
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(500px circle at var(--x, 50%) var(--y, 50%), rgba(76, 201, 240, 0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.spot-card:hover::before,
+.spot-card:hover::after {
+  opacity: 1;
+}
+
+/* ============================================================
+   6. ANIMACIONES DEL GRAFO DE NODOS (Hero)
+   Ver componente SeccionInicio.vue
+   ============================================================ */
+
+/* Las líneas del grafo se "dibujan" de inicio a fin al cargar la página */
+.node-line {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: dibujar-linea 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes dibujar-linea {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Los puntos (nodos) flotan suavemente de forma continua */
+.node-dot {
+  animation: flotar 6s ease-in-out infinite;
+}
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Anillo de "pulso" alrededor de cada nodo, como un radar */
+.pulse-ring {
+  animation: anillo-pulso 3s ease-out infinite;
+}
+@keyframes anillo-pulso {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Aparición simple con fundido, usada en textos del Hero */
+.fade-in {
+  animation: aparecer 1s ease forwards;
+}
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   7. ACCESIBILIDAD: respeta la preferencia de "reducir movimiento"
+   del sistema operativo del usuario, desactivando animaciones.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .node-line {
+    stroke-dashoffset: 0 !important;
+  }
+}
