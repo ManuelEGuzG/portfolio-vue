@@ -26,7 +26,7 @@ defineProps({
     />
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 py-24 sm:py-32 text-center" v-revelar>
-      <p class="blueprint-tag justify-center inline-flex">Sec. 04</p>
+      <p class="blueprint-tag justify-center inline-flex">Sec. 03</p>
       <h2 class="font-display font-semibold text-3xl sm:text-5xl mt-4 leading-tight">
         Construyamos<br class="hidden sm:block" /> algo juntos.
       </h2>
