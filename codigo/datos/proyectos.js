@@ -93,7 +93,7 @@ export const proyectos = [
     titulo: 'Norte Songs — Aplicación Web de Música y Letras',
     descripcion:
       'Aplicación web multimedia desarrollada con **Vue 3** para la gestión y presentación del repertorio musical de la Iglesia del Norte.',
-    tecnologias: ['Vue 3'],
+    tecnologias: ['Vue.js', 'HTML5', 'CSS3', 'JavaScript'],
     tipo: 'personal',
     urlRepositorio: '',
     urlDemo: 'https://manueleguzg.github.io/Gu-a-Tur-stica-Multimedia-de-Costa-Rica/',
