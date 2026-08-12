@@ -32,8 +32,8 @@ const perfil = {
   correo: 'manu05gg09@gmail.com',
   telefono: '(506) 8515-8699',
   ubicacion: 'Liberia, Guanacaste, Costa Rica',
-  urlGithub: 'https://github.com/tu-usuario',
-  urlLinkedin: 'https://linkedin.com/in/tu-usuario',
+  urlGithub: 'https://github.com/ManuelEGuzG',
+  urlLinkedin: 'https://www.linkedin.com/in/manuel-guzmán-b10015327/',
   urlCv: '/cv.pdf'
 }
 </script>
