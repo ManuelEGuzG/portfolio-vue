@@ -87,6 +87,17 @@ export const proyectos = [
     urlRepositorio: '',
     urlDemo: 'https://manueleguzg.github.io/Gu-a-Tur-stica-Multimedia-de-Costa-Rica/',
     estadisticas: { agregadas: 1620, eliminadas: 280 }
+  },
+  {
+    id: 'p7',
+    titulo: 'Norte Songs — Aplicación Web de Música y Letras',
+    descripcion:
+      'Aplicación web multimedia desarrollada con **Vue 3** para la gestión y presentación del repertorio musical de la Iglesia del Norte.',
+    tecnologias: ['Vue 3'],
+    tipo: 'personal',
+    urlRepositorio: '',
+    urlDemo: 'https://manueleguzg.github.io/Gu-a-Tur-stica-Multimedia-de-Costa-Rica/',
+    estadisticas: { agregadas: 845, eliminadas: 310 }
   }
 ]
 
