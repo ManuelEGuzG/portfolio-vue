@@ -61,7 +61,7 @@ export const proyectos = [
     descripcion:
       'Aplicación web para gestión de inventario y ventas de pequeños comercios, con módulos de inventario, ventas, dashboard y reportes. Backend en Laravel bajo arquitectura de controladores, servicios y modelos, integrado con el frontend mediante API. Implementación de autenticación, control de acceso y aislamiento de información entre comercios, usando Git y Docker durante el desarrollo.',
     tecnologias: ['Laravel', 'Vue.js', 'MySQL', 'Git', 'Docker'],
-    tipo: 'academico',
+    tipo: 'personal',
     urlRepositorio: '',
     urlDemo: '',
     estadisticas: { agregadas: 1780, eliminadas: 310 }
@@ -75,14 +75,14 @@ export const proyectos = [
     tipo: 'academico',
     urlRepositorio: '',
     urlDemo: '',
-    estadisticas: { agregadas: 1620, eliminadas: 280 }
+    estadisticas: { agregadas: 679, eliminadas: 280 }
   },
   {
     id: 'p6',
     titulo: 'Guia Naturalista de Costa Rica',
     descripcion:
-      'Sistema para estimar el peso de bovinos a partir de imágenes, con backend en Laravel integrado al frontend en Vue.js mediante API. Incorpora un módulo en Python para el procesamiento/estimación con IA y una app en Android Studio para captura en campo. Uso de Docker y Git durante el desarrollo y mantenimiento del proyecto.',
-    tecnologias: ['Laravel', 'Vue.js', 'MySQL', 'Docker', 'Python', 'Android Studio'],
+      'Aplicación web interactiva que permite explorar destinos turísticos de Costa Rica a través de imágenes, audio, video y datos estructurados. Desarrollada íntegramente con tecnologías nativas del navegador',
+    tecnologias: ['HTML5', 'CSS3', 'JavaScript'],
     tipo: 'academico',
     urlRepositorio: '',
     urlDemo: 'https://manueleguzg.github.io/Gu-a-Tur-stica-Multimedia-de-Costa-Rica/',
